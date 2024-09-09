@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive Content</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .buttons-container {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .buttons-container button {
+            background-color: #f1f3f5;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .buttons-container button.active {
+            background-color: #adb5bd;
+        }
+        .content-container {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            display: none;
+        }
+        .content-container.active {
+            display: block;
+        }
+        .content-container h2 {
+            margin-top: 0;
+        }
+        .play-button {
+            width: 40px;
+            height: 40px;
+            background-color: #000;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="buttons-container">
+        <button data-content="development">Development</button>
+        <button data-content="products">Products</button>
+        <button data-content="testing">Testing</button>
+        <button data-content="ai">AI</button>
+    </div>
+
+    <div class="content-container" id="development">
+        <h2>Optimize and scale, easy to start - Development</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+        <div class="play-button">▶</div>
+    </div>
+
+    <div class="content-container" id="products">
+        <h2>Explore our Products</h2>
+        <p>Our products are designed to help you scale effortlessly...</p>
+        <div class="play-button">▶</div>
+    </div>
+
+    <div class="content-container" id="testing">
+        <h2>Testing for Quality Assurance</h2>
+        <p>We ensure the highest standards of quality through rigorous testing...</p>
+        <div class="play-button">▶</div>
+    </div>
+
+    <div class="content-container" id="ai">
+        <h2>AI-Powered Solutions</h2>
+        <p>Leverage AI to optimize your business processes...</p>
+        <div class="play-button">▶</div>
+    </div>
+
+    <script>
+        const buttons = document.querySelectorAll('.buttons-container button');
+        const contents = document.querySelectorAll('.content-container');
+
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                buttons.forEach(btn => btn.classList.remove('active'));
+                contents.forEach(content => content.classList.remove('active'));
+
+                // Add active class to the clicked button and the corresponding content
+                button.classList.add('active');
+                document.getElementById(button.dataset.content).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
